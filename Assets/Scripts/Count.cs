@@ -10,75 +10,58 @@ public class Count : MonoBehaviour
     public bool isCount = false;
     public int countdown = 5;
     public int count;
-    public float distance;
 
     public TextMeshProUGUI countdownText;
-    public TextMeshProUGUI countText_ChargeUp;
-    public TextMeshProUGUI countText_Fly;
-    public TextMeshProUGUI distanceText_Fly;
-    public TextMeshProUGUI distanceText_End;
-
-    public GameObject axeObj;
+    public TextMeshProUGUI chargeUpCountText;
+    public TextMeshProUGUI flyCountText;
+    public TextMeshProUGUI flyDistanceText;
+    public TextMeshProUGUI endDistanceText;
     
     private GameManager gameManager;
     private Axe axe;
-    private Vector3 startPos;
+    
 
     void Start()
     {
         gameManager = GameManager.instance;
-        axeObj = GameObject.Find("Axe");
         axe = GameObject.Find("Axe").GetComponent<Axe>();
-        startPos = axeObj.transform.position;
     }
     // Update is called once per frame
     void Update()
     {
         //蓄力(計時)開始
-        if (gameManager.isStart && !isCount && !axe.isThrow){
+        if (gameManager.isChargeUp && !isCount){
             StartCoroutine(Countdown());
         }
         //計數
-        if (Input.GetKeyDown("space") && isCount){
+        if (Input.GetKeyDown("space") && gameManager.isChargeUp){
             count++;
-            Debug.Log("count");
-            countText_ChargeUp.text = count.ToString();
+            chargeUpCountText.text = count.ToString();
         }
-        //計數
+        //計距離
         if (gameManager.isFly){
-            CountDistance();
+            float distance = axe.GetDistance();
+            flyDistanceText.text = distance.ToString();
+            endDistanceText.text = distance.ToString();
         }
     }
     //計時
     IEnumerator Countdown(){
         count = 0;
         isCount = true;
-
         for (int i = countdown; i >= 0; i--){
             countdownText.text = i.ToString();
             yield return new WaitForSeconds(1);
         }
+        //計時結束後
 
-        isCount = false;
-        count = GetCount();
-        axe.Throw();
+        //紀錄最終count
+        flyCountText.text = count.ToString();
+        //丟出斧頭
+        axe.ThrowWithForce(count);
+        //切換到Fly
         gameManager.Fly();
-        Debug.Log("Score:" + count);
+        Debug.Log("Count:" + count);
     }
-    public int GetCount(){
-        countText_Fly.text = count.ToString();
-        return count;
-    }
-    //計距離
-    public void CountDistance(){
-        Vector3 axe_X = new Vector3 (axeObj.transform.position.x, 0f, 0f);
-        Vector3 start_x = new Vector3 (startPos.x, 0f, 0f);
-        distance = Vector3.Distance(axe_X, start_x);
-        distanceText_Fly.text = distance.ToString();
-        GetScore();
-    }
-    public float GetScore(){
-        distanceText_End.text = distance.ToString();
-        return distance;
-    }
+
 }
