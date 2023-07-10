@@ -1011,6 +1011,7 @@ GameObject:
   - component: {fileID: 612684875}
   - component: {fileID: 612684876}
   - component: {fileID: 612684877}
+  - component: {fileID: 612684878}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1068,13 +1069,27 @@ MonoBehaviour:
   isCount: 0
   countdown: 5
   count: 0
-  distance: 0
   countdownText: {fileID: 1358217557}
   chargeUpCountText: {fileID: 45828666}
   flyCountText: {fileID: 1851364822}
   flyDistanceText: {fileID: 252063616}
   endDistanceText: {fileID: 1601042140}
-  axeObj: {fileID: 1419410244}
+--- !u!114 &612684878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612684873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c72148804415643bb375a70c250bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: 
+  playerScore: 0
+  dataCount: 10
+  datas: 00000000000000000000000000000000
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

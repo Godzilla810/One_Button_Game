@@ -48,7 +48,4 @@ public class Axe : MonoBehaviour
         distance = Vector3.Distance(current_x, start_x);
         return distance;
     }
-
-
-
 }

@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         isEnd = true;
         flyPanel.SetActive(false);
         endPanel.SetActive(true);
+        GameObject.Find("GameManager").GetComponent<ScoreStored>().SaveData();
     }
     //重開(動作)
     public void Restart(){

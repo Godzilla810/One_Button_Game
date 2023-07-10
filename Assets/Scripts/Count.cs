@@ -29,16 +29,16 @@ public class Count : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //蓄力(計時)開始
+        //計時開始
         if (gameManager.isChargeUp && !isCount){
             StartCoroutine(Countdown());
         }
-        //計數
+        //蓄力中(計次數)
         if (Input.GetKeyDown("space") && gameManager.isChargeUp){
             count++;
             chargeUpCountText.text = count.ToString();
         }
-        //計距離
+        //飛行中(計距離)
         if (gameManager.isFly){
             float distance = axe.GetDistance();
             flyDistanceText.text = distance.ToString();
@@ -55,6 +55,7 @@ public class Count : MonoBehaviour
         }
         //計時結束後
 
+        isCount = false;
         //紀錄最終count
         flyCountText.text = count.ToString();
         //丟出斧頭
