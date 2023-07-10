@@ -73,6 +73,7 @@ public class ScoreStored : MonoBehaviour
 
     public void Sort()
     {
+        datas.Clear();
         for (int i = 1; i <= 10; i++)
         {
             if (System.IO.File.Exists(Application.streamingAssetsPath + "/data" + i))
@@ -92,7 +93,7 @@ public class ScoreStored : MonoBehaviour
             
         }
         datas.Sort((x, y) => -x.CompareTo(y));
-        for (int i = 1; i <= 10; i++)
+        for (int i = 1; i <= datas.Count; i++)
         {
             Debug.Log(i + "." + datas[i - 1]);
         }
