@@ -37,7 +37,7 @@ public class Count : MonoBehaviour
         //蓄力中(計次數)
         if (Input.GetKeyDown("space") && gameManager.isChargeUp){
             count++;
-            chargeUpCountText.text = count.ToString();
+            chargeUpCountText.text = count.ToString() + "Hit";
         }
         //飛行中(計距離)
         if (gameManager.isFly){
