@@ -5,8 +5,6 @@ using UnityEngine;
 public class Axe : MonoBehaviour
 {
     public float throwAngle = 30f;
-    public bool isThrow = false;
-    public bool isStop = false;
 
     private GameManager gameManager;
     private Rigidbody RB;

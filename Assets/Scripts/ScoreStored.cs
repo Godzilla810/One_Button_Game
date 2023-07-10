@@ -50,7 +50,7 @@ public class ScoreStored : MonoBehaviour
                         file.Close();
                         playerData loadData = new playerData();
                         loadData = JsonUtility.FromJson<playerData>(loadJson);
-                        if(loadData.score == datas[9] && GameObject.Find("GameManager").GetComponent<Count>().count >= datas[9])
+                        if(loadData.score == datas[9] && GameObject.Find("GameManager").GetComponent<Count>().count > datas[9])
                         {
                             playerData data = new playerData();
                             data.name = playerName;
@@ -59,6 +59,8 @@ public class ScoreStored : MonoBehaviour
                             StreamWriter fileLast = new StreamWriter(System.IO.Path.Combine(Application.streamingAssetsPath, "data" + j));
                             fileLast.Write(save);
                             fileLast.Close();
+                            //Debug.Log("qweqwe");
+                            break;
                         }
                     }
                     else

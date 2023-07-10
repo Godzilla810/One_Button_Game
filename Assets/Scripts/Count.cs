@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Count : MonoBehaviour
 {
+    public GameObject thingToThrow;
     public bool isCount = false;
     public int countdown = 5;
     public int count;
@@ -24,7 +25,7 @@ public class Count : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.instance;
-        axe = GameObject.Find("Axe").GetComponent<Axe>();
+        axe = thingToThrow.GetComponent<Axe>();
     }
     // Update is called once per frame
     void Update()
