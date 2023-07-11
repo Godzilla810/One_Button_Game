@@ -10,7 +10,6 @@ public class AnimationManager : MonoBehaviour
     public GameObject subCamera;
 
     private Animator devilAnimator;
-    private Animator bananaAnimator;
     private Animator mainCameraAnimator;
     private Animator subCameraAnimator;
 
@@ -20,7 +19,6 @@ public class AnimationManager : MonoBehaviour
     {
         gameManager = GameManager.instance;
         devilAnimator = devil.GetComponent<Animator>();
-        bananaAnimator = banana.GetComponent<Animator>();
         mainCameraAnimator = mainCamera.GetComponent<Animator>();
         subCameraAnimator = subCamera.GetComponent<Animator>();
     }
@@ -33,7 +31,6 @@ public class AnimationManager : MonoBehaviour
         }
         else if (gameManager.isChargeUp){
             devilAnimator.SetTrigger("Start");
-            bananaAnimator.SetTrigger("Banana");
             mainCameraAnimator.SetTrigger("Transition_ChargeUp");
         }
         else if (gameManager.isFly){
