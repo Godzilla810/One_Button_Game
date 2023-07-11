@@ -19,7 +19,7 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (gameManager.isMenu){
+        // if (gameManager.isReady){
         // }
         // else if (gameManager.isChargeUp){
         // }

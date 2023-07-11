@@ -26,12 +26,15 @@ public class AnimationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.isMenu){
+        if (gameManager.isReady){
 
         }
         else if (gameManager.isChargeUp){
             devilAnimator.SetTrigger("Start");
             mainCameraAnimator.SetTrigger("Transition_ChargeUp");
+        }
+        else if (Input.GetKeyDown("space") && gameManager.isChargeUp){
+            
         }
         else if (gameManager.isFly){
             devilAnimator.SetTrigger("Throw");

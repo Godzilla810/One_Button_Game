@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 //----------ReadME----------//
 // 確認目前狀態:
-// isMenu
+// isReady
 // 呼叫新的狀態:
-// Menu()
+// Ready()
 //----------ReadME----------//
 public class GameManager : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     }
     public GameObject banana;
 
-    public bool isMenu = true;
+    public bool isReady = true;
     public bool isChargeUp = false;
     public bool isFly = false;
     public bool isEnd = false;
@@ -29,22 +29,22 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //蓄力
-        if (Input.GetKeyDown("space") && isMenu && !isEnd){
+        if (Input.GetKeyDown("space") && isReady && !isEnd){
             ChargeUp();
         }
         //重開
-        else if (Input.GetKeyDown("space") && !isMenu && isEnd){
+        else if (Input.GetKeyDown("space") && !isReady && isEnd){
             Restart();
         }
     }
     //主選單
-    public void Menu(){
+    public void Ready(){
         isEnd = false;
-        isMenu = true;
+        isReady = true;
     }
     //蓄力
     public void ChargeUp(){
-        isMenu = false;
+        isReady = false;
         isChargeUp = true;
 
         banana.SetActive(false);

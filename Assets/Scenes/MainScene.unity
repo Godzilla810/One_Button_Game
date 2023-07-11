@@ -1336,7 +1336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   banana: {fileID: 7178654987998445361}
-  isMenu: 1
+  isReady: 1
   isChargeUp: 0
   isFly: 0
   isEnd: 0
@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28474dee8d642b488d04c175826ff82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuPanel: {fileID: 1182795969}
+  readyPanel: {fileID: 1182795969}
   chargeUpPanel: {fileID: 242866584}
   flyPanel: {fileID: 59124306}
   endPanel: {fileID: 1119511672}
@@ -2066,7 +2066,7 @@ GameObject:
   - component: {fileID: 1182795972}
   - component: {fileID: 1182795971}
   m_Layer: 5
-  m_Name: Menu
+  m_Name: Ready
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2895,7 +2895,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6e8253dee697b8941861eaf945884a64, type: 2}
+  - {fileID: 2100000, guid: 673505286a60d1e4f87f03ba443f2301, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

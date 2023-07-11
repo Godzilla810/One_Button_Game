@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject menuPanel;
+    public GameObject readyPanel;
     public GameObject chargeUpPanel;
     public GameObject flyPanel;
     public GameObject endPanel;
@@ -19,12 +19,12 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.isMenu){
+        if (gameManager.isReady){
             endPanel.SetActive(false);
-            menuPanel.SetActive(true);
+            readyPanel.SetActive(true);
         }
         else if (gameManager.isChargeUp){
-            menuPanel.SetActive(false);
+            readyPanel.SetActive(false);
             chargeUpPanel.SetActive(true);
         }
         else if (gameManager.isFly){
