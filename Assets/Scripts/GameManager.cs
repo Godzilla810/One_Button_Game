@@ -19,11 +19,6 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
     }
-    public GameObject menuPanel;
-    public GameObject chargeUpPanel;
-    public GameObject flyPanel;
-    public GameObject endPanel;
-
     public GameObject banana;
 
     public bool isMenu = true;
@@ -46,15 +41,11 @@ public class GameManager : MonoBehaviour
     public void Menu(){
         isEnd = false;
         isMenu = true;
-        endPanel.SetActive(false);
-        menuPanel.SetActive(true);
     }
     //蓄力
     public void ChargeUp(){
         isMenu = false;
         isChargeUp = true;
-        menuPanel.SetActive(false);
-        chargeUpPanel.SetActive(true);
 
         banana.SetActive(false);
         // 4.99 秒後激活 banana
@@ -64,15 +55,11 @@ public class GameManager : MonoBehaviour
     public void Fly(){
         isChargeUp = false;
         isFly = true;
-        chargeUpPanel.SetActive(false);
-        flyPanel.SetActive(true);
     }
     //落地結束
     public void End(){
         isFly = false;
         isEnd = true;
-        flyPanel.SetActive(false);
-        endPanel.SetActive(true);
         GetComponent<ScoreStored>().SaveData();
     }
     //重開(動作)
