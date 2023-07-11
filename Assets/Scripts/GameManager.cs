@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public GameObject flyPanel;
     public GameObject endPanel;
 
+    public GameObject banana;
+
     public bool isMenu = true;
     public bool isChargeUp = false;
     public bool isFly = false;
@@ -53,6 +55,10 @@ public class GameManager : MonoBehaviour
         isChargeUp = true;
         menuPanel.SetActive(false);
         chargeUpPanel.SetActive(true);
+
+        banana.SetActive(false);
+        // 4.99 秒後激活 banana
+        StartCoroutine(ActivateBananaAfterDelay(4.99f));
     }
     //飛行過程
     public void Fly(){
@@ -72,5 +78,10 @@ public class GameManager : MonoBehaviour
     //重開(動作)
     public void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    IEnumerator ActivateBananaAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        banana.SetActive(true);
     }
 }

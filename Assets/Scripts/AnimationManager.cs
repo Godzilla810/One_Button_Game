@@ -35,16 +35,14 @@ public class AnimationManager : MonoBehaviour
         }
         else if (gameManager.isFly){
             devilAnimator.SetTrigger("Throw");
-            StartCoroutine(Countdown_05s());
-
+            mainCamera.SetActive(false);
+            subCamera.SetActive(true);
         }
         else if (gameManager.isEnd){
 
         }
     }
-    IEnumerator Countdown_05s(){
-        yield return new WaitForSeconds(0.5f);
-        mainCamera.SetActive(false);
-        subCamera.SetActive(true);
-    }
+    // IEnumerator Countdown_05s(){
+    //     yield return new WaitForSeconds(0.5f);
+    // }
 }
