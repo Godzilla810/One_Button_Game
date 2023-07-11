@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     }
     //蓄力
     public void ChargeUp(){
+        Debug.Log("ChargeUp");
         isMenu = false;
         isChargeUp = true;
         menuPanel.SetActive(false);
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
     }
     //飛行過程
     public void Fly(){
+        Debug.Log("Fly");
         isChargeUp = false;
         isFly = true;
         chargeUpPanel.SetActive(false);
