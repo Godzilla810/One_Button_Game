@@ -44,7 +44,7 @@ public class Axe : MonoBehaviour
     public float GetDistance(){
         Vector3 current_x = new Vector3 (transform.position.x, 0f, 0f);
         Vector3 start_x = new Vector3 (startPos.x, 0f, 0f);
-        distance = Vector3.Distance(current_x, start_x);
+        distance = Vector3.Distance(current_x, start_x) * 10;
         return distance;
     }
 }

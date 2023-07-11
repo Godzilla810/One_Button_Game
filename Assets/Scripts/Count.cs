@@ -42,8 +42,8 @@ public class Count : MonoBehaviour
         //飛行中(計距離)
         if (gameManager.isFly){
             float distance = axe.GetDistance();
-            flyDistanceText.text = distance.ToString() + "Miles";
-            endDistanceText.text = distance.ToString() + "Miles";
+            flyDistanceText.text = distance.ToString("0.00") + "Miles";
+            endDistanceText.text = distance.ToString("0.00");
         }
     }
     //計時
