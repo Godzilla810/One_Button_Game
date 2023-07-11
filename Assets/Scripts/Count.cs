@@ -20,12 +20,14 @@ public class Count : MonoBehaviour
     
     private GameManager gameManager;
     private Axe axe;
+    private Animator animator;
     
 
     void Start()
     {
         gameManager = GameManager.instance;
         axe = thingToThrow.GetComponent<Axe>();
+        animator = GameObject.Find("Devil").GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
@@ -50,12 +52,13 @@ public class Count : MonoBehaviour
     IEnumerator Countdown(){
         count = 0;
         isCount = true;
+        animator.SetTrigger("Start");
         for (int i = countdown; i >= 0; i--){
             countdownText.text = i.ToString();
             yield return new WaitForSeconds(1);
         }
         //計時結束後
-
+        animator.SetTrigger("Throw");
         isCount = false;
         //紀錄最終count
         flyCountText.text = count.ToString();
