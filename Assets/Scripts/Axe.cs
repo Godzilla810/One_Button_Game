@@ -14,16 +14,17 @@ public class Axe : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.instance;
-        RB = this.GetComponent<Rigidbody>();
         startPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        RB = this.GetComponent<Rigidbody>();
     }
 
     public void ThrowWithForce(int count){
+        RB.isKinematic = false;
         //拋物線
         Quaternion rotation = Quaternion.Euler(0f, 0f, throwAngle);
         Vector3 forceDirection = rotation * transform.right;
