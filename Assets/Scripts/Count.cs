@@ -42,8 +42,8 @@ public class Count : MonoBehaviour
         //飛行中(計距離)
         if (gameManager.isFly){
             float distance = axe.GetDistance();
-            flyDistanceText.text = distance.ToString();
-            endDistanceText.text = distance.ToString();
+            flyDistanceText.text = distance.ToString() + "Miles";
+            endDistanceText.text = distance.ToString() + "Miles";
         }
     }
     //計時
@@ -57,7 +57,7 @@ public class Count : MonoBehaviour
         //計時結束後
 
         //紀錄最終count
-        flyCountText.text = count.ToString();
+        flyCountText.text = count.ToString() + "Hit";
         //丟出斧頭
         axe.ThrowWithForce(count);
         //切換到Fly

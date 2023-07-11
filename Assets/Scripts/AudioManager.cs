@@ -19,13 +19,13 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.isMenu){
-        }
-        else if (gameManager.isChargeUp){
-        }
-        else if (gameManager.isFly){
-        }
-        else if (gameManager.isEnd){
+        // if (gameManager.isMenu){
+        // }
+        // else if (gameManager.isChargeUp){
+        // }
+        // else if (gameManager.isFly){
+        // }
+        if (gameManager.isEnd){
             bgAudio.mute = true;
         }
     }
