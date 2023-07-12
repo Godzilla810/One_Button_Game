@@ -1,16 +1,21 @@
 using UnityEngine;
 
 public class SETTINGCAM : MonoBehaviour
-{
+{   
+
     public GameObject mainCamera;
     public GameObject subCamera;
     public GameObject endingCamera;
+    public GameObject realEndCamera;
     public GameObject banana;
 
     private float endingCameraSwitchPosition;
+    // private float realEndCameraSwitchPosition;
+
 
     public bool hasSwitchedToSubCamera = false;
     public bool hasSwitchedToEndingCamera = false;
+    public bool hasSwitchedToRealEndCamera = false;
 
     void Start()
     {
@@ -34,11 +39,18 @@ public class SETTINGCAM : MonoBehaviour
         }
 
         // If the Banana's x position is equal to the ending camera's switch position and has not switched to the ending camera yet, switch to the Ending Camera
-        if (banana.transform.position.x >= endingCameraSwitchPosition)
+        if (!hasSwitchedToEndingCamera && banana.transform.position.x >= endingCameraSwitchPosition)
         {
             subCamera.SetActive(false);
             endingCamera.SetActive(true);
             hasSwitchedToEndingCamera = true; // Indicate that we have switched to the ending camera
+
+        }
+        if (banana.transform.position.x >= 150)
+        {
+            endingCamera.SetActive(false);
+            realEndCamera.SetActive(true);
+            hasSwitchedToRealEndCamera = true; // Indicate that we have switched to the ending camera
         }
     }
 }
