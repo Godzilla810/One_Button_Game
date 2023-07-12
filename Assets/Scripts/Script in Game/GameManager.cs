@@ -62,11 +62,12 @@ public class GameManager : MonoBehaviour
     public void End(){
         isFly = false;
         isEnd = true;
-        GetComponent<ScoreStored>().SaveData();
+        GetComponent<ScoreStored>().SaveScore();
     }
     //重開(動作)
     public void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GetComponent<ScoreStored>().SaveData();
     }
 
     IEnumerator ActivateBananaAfterDelay(float delay)
