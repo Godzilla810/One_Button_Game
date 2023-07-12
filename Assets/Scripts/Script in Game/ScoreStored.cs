@@ -23,14 +23,6 @@ public class ScoreStored : MonoBehaviour
    
     void Start()
     {
-
-        //for (int i = 1; i <= 10; i++)
-        //{
-        //    Debug.Log(datas[i]);
-        //    //ranking.Add(new nameAndScore(names[i], datas[i]));
-        //}
-
-        
         PlayerPrefs.SetString("name", "none");
         dataCount = 1;
         Sort();
