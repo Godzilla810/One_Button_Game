@@ -39,8 +39,8 @@ public class AnimationManager : MonoBehaviour
         }
         else if (gameManager.isFly){
             devilAnimator.SetTrigger("Throw");
-            mainCamera.SetActive(false);
-            subCamera.SetActive(true);
+            // mainCamera.SetActive(false);
+            // subCamera.SetActive(true);
         }
         else if (gameManager.isEnd){
 
