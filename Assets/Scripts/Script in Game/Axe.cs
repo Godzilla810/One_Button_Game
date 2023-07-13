@@ -9,7 +9,7 @@ public class Axe : MonoBehaviour
     private GameManager gameManager;
     private Rigidbody RB;
     private Vector3 startPos;
-    private float distance;
+    public float distance;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,14 +37,16 @@ public class Axe : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (gameManager.isFly){
+            Debug.Log("end");
             gameManager.End();
         }
+        // distance = GetDistance();
     }
     //計距離
     public float GetDistance(){
-        Vector3 current_x = new Vector3 (transform.position.x, 0f, 0f);
+        Vector3 end_x = new Vector3 (transform.position.x, 0f, 0f);
         Vector3 start_x = new Vector3 (startPos.x, 0f, 0f);
-        distance = Vector3.Distance(current_x, start_x) * 10;
+        distance = Vector3.Distance(end_x, start_x) * 10;
         return distance;
     }
 }

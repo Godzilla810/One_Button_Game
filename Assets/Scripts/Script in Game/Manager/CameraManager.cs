@@ -3,55 +3,40 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {   
 
-    public GameObject Camera1;
-    public GameObject Camera2;
-    public GameObject Camera3;
-    public GameObject Camera4;
-    public GameObject banana;
+    public Camera[] cameras;
+    public Transform banana;
 
     private float Camera3SwitchPosition;
-
-    public bool hasSwitchedToCamera2 = false;
-    public bool hasSwitchedToCamera3 = false;
-
     private GameManager gameManager;
 
     void Start()
     {
         gameManager = GameManager.instance;
-
-        // Initialize all the cameras
-        Camera1.SetActive(true);
-        Camera2.SetActive(false);
-        Camera3.SetActive(false);
-        Camera4.SetActive(false);
-
-        Camera3SwitchPosition = Camera3.transform.position.x - 50;
+        OpenCamera(0);
     }
 
     void Update()
     {
-        if (!hasSwitchedToCamera2 && gameManager.isFly)
+        if (banana.position.x >= 100 && banana.position.x <= 180)
         {
-            Camera1.SetActive(false);
-            Camera2.SetActive(true);
-            hasSwitchedToCamera2 = true;
+            OpenCamera(2);
         }
-        if (!hasSwitchedToCamera3 && banana.transform.position.x >= Camera3SwitchPosition)
+        else if (gameManager.isFly)
         {
-            Camera2.SetActive(false);
-            Camera3.SetActive(true);
-            hasSwitchedToCamera3 = true;
-
-        }
-        if (banana.transform.position.x >= 150)
-        {
-            Camera3.SetActive(false);
-            Camera2.SetActive(true);
+            OpenCamera(1);
         }
         if (gameManager.isEnd){
-            Camera2.SetActive(false);
-            Camera4.SetActive(true);
+            OpenCamera(3);
+        }
+    }
+    void OpenCamera(int cameraIndex){
+        for (int i = 0; i < cameras.Length; i++){
+            if (i == cameraIndex){
+                cameras[i].enabled = true;
+            }
+            else{
+                cameras[i].enabled = false;
+            }
         }
     }
 }

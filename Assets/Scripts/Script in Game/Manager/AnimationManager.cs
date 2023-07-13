@@ -41,7 +41,7 @@ public class AnimationManager : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown("space") && gameManager.isChargeUp){
+        if (Input.GetKeyDown("space") && gameManager.isChargeUp && hitAnimator != null){
             hitAnimator.Play("Hit", 0, 0f);
         }
     }

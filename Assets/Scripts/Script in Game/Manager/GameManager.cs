@@ -42,16 +42,14 @@ public class GameManager : MonoBehaviour
     public void Ready(){
         isEnd = false;
         isReady = true;
-        StartCoroutine(ActivateChargeUpAfterDelay(3));
+        StartCoroutine(ActivateChargeUpAfterDelay(1));
     }
     //蓄力
     public void ChargeUp(){
         isReady = false;
         isChargeUp = true;
-
         banana.SetActive(false);
-        // 4.99 秒後激活 banana
-        StartCoroutine(ActivateBananaAfterDelay(4.99f));
+        StartCoroutine(ActivateFlyAfterDelay(5));
     }
     //飛行過程
     public void Fly(){
@@ -70,15 +68,15 @@ public class GameManager : MonoBehaviour
         GetComponent<ScoreStored>().SaveData();
     }
 
-    IEnumerator ActivateBananaAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        banana.SetActive(true);
-    }
-
     IEnumerator ActivateChargeUpAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         ChargeUp();
+    }
+    IEnumerator ActivateFlyAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        banana.SetActive(true);
+        Fly();
     }
 }

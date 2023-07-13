@@ -5,17 +5,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject readyPanel;
-    public GameObject chargeUpPanel;
-    public GameObject flyPanel;
-    public GameObject endPanel;
-    public GameObject cgImage;
-
-    public Sprite cg1;
-    public Sprite cg2;
-    public Sprite cg3;
-    public Sprite cg4;
-    public Sprite cg5;
+    public GameObject[] panels;
+    public Sprite[] sprites;
+    public GameObject CG;
 
     private GameManager gameManager;
     // Start is called before the first frame update
@@ -28,43 +20,49 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         if (gameManager.isReady){
-            endPanel.SetActive(false);
-            readyPanel.SetActive(true);
+            OpenPanel(0);
         }
         else if (gameManager.isChargeUp){
-            readyPanel.SetActive(false);
-            chargeUpPanel.SetActive(true);
+            OpenPanel(1);
         }
         else if (gameManager.isFly){
-            chargeUpPanel.SetActive(false);
-            flyPanel.SetActive(true);
+            OpenPanel(2);
         }
         if (gameManager.isEnd){
-            flyPanel.SetActive(false);
-            endPanel.SetActive(true);
+            OpenPanel(3);
             GetCG();
         }
     }
-        public void GetCG(){
-        float distance = GameObject.Find("Banana").GetComponent<Axe>().GetDistance();
+    void GetCG(){
+        float distance = GameObject.Find("Banana").GetComponent<Axe>().distance;
         if (distance <= 1000){
-            cgImage.GetComponent<Image>().sprite = cg1;
+            CG.GetComponent<Image>().sprite = sprites[0];
         }
         else if (distance > 1000 && distance <= 2000)
         {
-            cgImage.GetComponent<Image>().sprite = cg2;
+            CG.GetComponent<Image>().sprite = sprites[1];
         }
         else if (distance > 2000 && distance <= 3000)
         {
-            cgImage.GetComponent<Image>().sprite = cg3;
+            CG.GetComponent<Image>().sprite = sprites[2];
         }
         else if (distance > 3000 && distance <= 4000)
         {
-            cgImage.GetComponent<Image>().sprite = cg4;
+            CG.GetComponent<Image>().sprite = sprites[3];
         }
         else if (distance > 4000)
         {
-            cgImage.GetComponent<Image>().sprite = cg5;
+            CG.GetComponent<Image>().sprite = sprites[4];
+        }
+    }
+    void OpenPanel(int panelIndex){
+        for (int i = 0; i < panels.Length; i++){
+            if (i == panelIndex){
+                panels[i].SetActive(true);
+            }
+            else{
+                panels[i].SetActive(false);
+            }
         }
     }
 }

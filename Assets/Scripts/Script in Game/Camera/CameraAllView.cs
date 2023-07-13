@@ -6,9 +6,9 @@ public class CameraAllView : MonoBehaviour
 {
     public Transform banana;
     public Transform player;
-    public Camera camera;
     public float speed;
     private Vector3 dir;
+    private Camera currentCamera;
     private bool isInitial = false;
     private bool isArrive;
     private bool isSmall;
@@ -20,9 +20,10 @@ public class CameraAllView : MonoBehaviour
     void Update()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        currentCamera = GetComponent<Camera>();
         isArrive = (transform.position.x <= player.position.x);
-        isBig = (camera.orthographicSize >= 3);
-        isSmall = (camera.orthographicSize <= 70);
+        isBig = (currentCamera.orthographicSize >= 3);
+        isSmall = (currentCamera.orthographicSize <= 70);
         if (!isInitial && gameManager.isEnd){
             Initialize();
             isInitial = true;
@@ -40,9 +41,9 @@ public class CameraAllView : MonoBehaviour
         }
     }
     void Initialize(){
-        Vector3 initialPos = new Vector3 (banana.position.x, 20, 0);
+        Vector3 initialPos = new Vector3 (banana.position.x, 20, 2);
         transform.position = initialPos;
-        camera.orthographicSize = 3;
+        currentCamera.orthographicSize = 3;
         //目標方向
         dir = new Vector3(player.position.x - banana.position.x, 0, 0).normalized;
     }
@@ -50,9 +51,9 @@ public class CameraAllView : MonoBehaviour
         transform.Translate(dir * Time.deltaTime * speed);
     }
     void ScaleUp(){
-        camera.orthographicSize += speed / 2 * Time.deltaTime;
+        currentCamera.orthographicSize += speed / 2 * Time.deltaTime;
     }
     void ScaleDown(){
-        camera.orthographicSize -= speed / 2 * Time.deltaTime;
+        currentCamera.orthographicSize -= speed / 2 * Time.deltaTime;
     }
 }
