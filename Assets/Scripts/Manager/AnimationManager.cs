@@ -28,9 +28,7 @@ public class AnimationManager : MonoBehaviour
         else if (gameManager.isChargeUp){
             devilAnimator.SetTrigger("Start");
             mainCameraAnimator.SetTrigger("Transition_ChargeUp");
-        }
-        else if (gameManager.isFly){
-            devilAnimator.SetTrigger("Throw");
+            StartCoroutine(ActivateThrowAfterDelay(4));
         }
         else if (gameManager.isEnd){
             bananaAnimator.enabled = false;
@@ -39,5 +37,10 @@ public class AnimationManager : MonoBehaviour
         if (Input.GetKeyDown("space") && gameManager.isChargeUp && hitAnimator != null){
             hitAnimator.Play("Hit", 0, 0f);
         }
+    }
+    IEnumerator ActivateThrowAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        devilAnimator.SetTrigger("Throw");
     }
 }

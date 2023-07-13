@@ -38,22 +38,22 @@ public class UIManager : MonoBehaviour
     }
     void GetCG(){
         float distance = GameObject.Find("Banana").GetComponent<Axe>().distance;
-        if (distance <= 1000){
+        if (distance <= 500){
             CG.GetComponent<Image>().sprite = sprites[0];
         }
-        else if (distance > 1000 && distance <= 2000)
+        else if (distance > 500 && distance <= 1000)
         {
             CG.GetComponent<Image>().sprite = sprites[1];
         }
-        else if (distance > 2000 && distance <= 3000)
+        else if (distance > 1000 && distance <= 1500)
         {
             CG.GetComponent<Image>().sprite = sprites[2];
         }
-        else if (distance > 3000 && distance <= 4000)
+        else if (distance > 1500 && distance <= 2000)
         {
             CG.GetComponent<Image>().sprite = sprites[3];
         }
-        else if (distance > 4000)
+        else if (distance > 2000)
         {
             CG.GetComponent<Image>().sprite = sprites[4];
         }

@@ -22,7 +22,7 @@ public class CameraAllView : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         currentCamera = GetComponent<Camera>();
         isArrive = (transform.position.x <= player.position.x);
-        isBig = (currentCamera.orthographicSize >= 3);
+        isBig = (currentCamera.orthographicSize >= 3.5);
         isSmall = (currentCamera.orthographicSize <= 70);
         if (!isInitial && gameManager.isEnd){
             Initialize();
