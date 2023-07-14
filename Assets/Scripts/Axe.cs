@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Axe : MonoBehaviour
 {
-    public float throwAngle = 30f;
+    public float throwAngle = 45f;
 
     private GameManager gameManager;
     private Rigidbody RB;

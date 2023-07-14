@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         isReady = false;
         isChargeUp = true;
         banana.SetActive(false);
-        StartCoroutine(ActivateFlyAfterDelay(5));
+        StartCoroutine(ActivateBananaAfterDelay(4.99f));
     }
     //飛行過程
     public void Fly(){
@@ -83,10 +83,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         ChargeUp();
     }
-    IEnumerator ActivateFlyAfterDelay(float delay)
+    IEnumerator ActivateBananaAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         banana.SetActive(true);
-        Fly();
     }
 }

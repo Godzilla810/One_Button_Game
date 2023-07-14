@@ -61,7 +61,7 @@ public class Count : MonoBehaviour
         //丟出斧頭
         axe.ThrowWithForce(count);
         //切換到Fly
-
+        gameManager.Fly();
     }
 
 }
