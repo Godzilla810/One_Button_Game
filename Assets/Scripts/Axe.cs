@@ -5,16 +5,16 @@ using UnityEngine;
 public class Axe : MonoBehaviour
 {
     public float throwAngle = 45f;
-
+    public float distance;
     private GameManager gameManager;
     private Rigidbody RB;
-    private Vector3 startPos;
-    public float distance;
+    private float startPos_x;
+    private float endPos_x;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.instance;
-        startPos = transform.position;
+        startPos_x = transform.position.x;
     }
 
     // Update is called once per frame
@@ -36,6 +36,7 @@ public class Axe : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (gameManager.isFly){
+            //清空速度
             RB.velocity = Vector3.zero;
             RB.angularVelocity = Vector3.zero;
             gameManager.End();
@@ -43,9 +44,8 @@ public class Axe : MonoBehaviour
     }
     //計距離
     public float GetDistance(){
-        Vector3 end_x = new Vector3 (transform.position.x, 0f, 0f);
-        Vector3 start_x = new Vector3 (startPos.x, 0f, 0f);
-        distance = Vector3.Distance(end_x, start_x) * 10;
+        endPos_x = transform.position.x;
+        distance = (endPos_x - startPos_x) * 10;
         return distance;
     }
 }

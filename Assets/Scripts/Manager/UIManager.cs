@@ -2,18 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject[] panels;
+    public TextMeshProUGUI[] records;
     public Sprite[] sprites;
     public GameObject CG;
 
+    public TextMeshProUGUI inputText;
+
     private GameManager gameManager;
+    private RecordManager recordManager;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.instance;
+        recordManager = RecordManager.instance;
     }
 
     // Update is called once per frame
@@ -21,6 +27,7 @@ public class UIManager : MonoBehaviour
     {
         if (gameManager.isMenu){
             OpenPanel(0);
+            GetRecord();
         }
         if (gameManager.isReady){
             OpenPanel(1);
@@ -34,6 +41,11 @@ public class UIManager : MonoBehaviour
         if (gameManager.isEnd){
             OpenPanel(4);
             GetCG();
+        }
+    }
+    void GetRecord(){
+        for (int i = 0;i < 10; i++){
+            records[i].text = recordManager.PrintTextFile(i);
         }
     }
     void GetCG(){

@@ -21,15 +21,7 @@ public class ScoreStored : MonoBehaviour
     public TextMeshProUGUI loadedName;
     public GameObject enterName;
     void Start()
-    {
-
-        //for (int i = 1; i <= 10; i++)
-        //{
-        //    Debug.Log(datas[i]);
-        //    //ranking.Add(new nameAndScore(names[i], datas[i]));
-        //}
-
-        
+    {   
         PlayerPrefs.SetString("name", "none");
         dataCount = 1;
         CountSort();
@@ -192,46 +184,6 @@ public class ScoreStored : MonoBehaviour
             counts.Sort((x, y) => -x.CompareTo(y));
         }
     }
-    //public void Sort()
-    //{
-    //    datas.Clear();
-        
-//        for (int i = 1; i <= 10; i++)
-//        {
-//            if (System.IO.File.Exists(Application.streamingAssetsPath + "/data" + i))
-//            {
-//                StreamReader file = new StreamReader(System.IO.Path.Combine(Application.streamingAssetsPath, "data" + i));
-//    string loadJson = file.ReadToEnd();
-//    file.Close();
-//                playerData loadData = new playerData();
-//    loadData = JsonUtility.FromJson<playerData>(loadJson);
-//                datas.Add(loadData.score);
-//                counts.Add(loadData.count);
-//                names.Add(loadData.name);
-//            }
-//            else
-//{
-//    break;
-//}  
-//        }
-    //    counts.Sort((x, y) => -x.CompareTo(y));
-    //    List<nameAndScore> ranking = new List<nameAndScore>();
-    //    for (int i = 0; i < datas.Count; i++)
-    //    {
-    //        ranking.Add(new nameAndScore(names[i], datas[i]));
-            
-    //    }
-    //    ranking.Sort((x, y) => { return -x.score.CompareTo(y.score); });
-    //    foreach(nameAndScore aa in ranking)
-    //    {
-    //        Debug.Log(aa.toString());
-    //        sortedScore.Add(aa.toString());
-    //    }
-    //    for (int i = 1; i <= datas.Count; i++)
-    //    {
-    //        GameObject.Find("Ranking/" + i).GetComponent<TextMeshProUGUI>().text = i + "." + sortedScore[i-1];
-    //    }
-    //}
 
     public class playerData
     {
@@ -251,9 +203,5 @@ public class ScoreStored : MonoBehaviour
             this.score = score;
         }
 
-        // public string toString()
-        // {
-        //     return name + " : " + score;
-        // }
     }
 }
