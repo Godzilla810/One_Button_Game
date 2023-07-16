@@ -8697,8 +8697,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwAngle: 45
-  distance: 0
   finalDistance: 0
+  distance: 0
 --- !u!95 &8698625167524093996
 Animator:
   serializedVersion: 5

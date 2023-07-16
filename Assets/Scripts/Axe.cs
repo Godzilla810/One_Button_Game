@@ -13,11 +13,13 @@ public class Axe : MonoBehaviour
     }
 
     public float throwAngle = 45f;
-    public float distance;
 
     private float startPos_x;
     private float endPos_x;
+    [HideInInspector]
     public float finalDistance;
+    [HideInInspector]
+    public float distance;
 
     private GameManager gameManager;
     private Rigidbody RB;

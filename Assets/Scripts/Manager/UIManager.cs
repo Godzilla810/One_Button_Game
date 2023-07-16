@@ -6,12 +6,12 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject[] panels;
     public GameObject CG;
-    public Sprite[] sprites;
-    public TextMeshProUGUI[] records;
     public GameObject inputField;
     public TextMeshProUGUI inputText;
+    public GameObject[] panels;
+    public Sprite[] sprites;
+    public TextMeshProUGUI[] records;
 
     public TextMeshProUGUI chargeUpCountText;
     public TextMeshProUGUI flyCountText;

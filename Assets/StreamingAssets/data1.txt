@@ -1,1 +1,0 @@
-{"name":"Guava​","count":57,"distance":4771.15332}
