@@ -1,1 +1,1 @@
-{"name":"John","count":100,"distance":5.6}
+{"name":"Guava​","count":57,"distance":4771.15332}

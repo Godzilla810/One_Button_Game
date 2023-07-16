@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class Axe : MonoBehaviour
 {
+    public static Axe instance;
+    void Awake() {
+        if (instance != null){
+            return;
+        }
+        instance = this;
+    }
+
     public float throwAngle = 45f;
     public float distance;
-    private GameManager gameManager;
-    private Rigidbody RB;
+
     private float startPos_x;
     private float endPos_x;
+    public float finalDistance;
+
+    private GameManager gameManager;
+    private Rigidbody RB;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.instance;
+        RB = GetComponent<Rigidbody>();
         startPos_x = transform.position.x;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        RB = this.GetComponent<Rigidbody>();
     }
 
     public void ThrowWithForce(int count){
@@ -28,8 +34,7 @@ public class Axe : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0f, 0f, throwAngle);
         Vector3 forceDirection = rotation * transform.right;
         Vector3 force = forceDirection * count;
-        //平丟
-        // Vector3 force = transform.right * count;
+
         RB.AddForce(force, ForceMode.Impulse);
     }
 
@@ -39,6 +44,8 @@ public class Axe : MonoBehaviour
             //清空速度
             RB.velocity = Vector3.zero;
             RB.angularVelocity = Vector3.zero;
+            //計算最終距離
+            finalDistance = (transform.position.x - startPos_x) * 10;
             gameManager.End();
         }
     }

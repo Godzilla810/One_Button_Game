@@ -6,7 +6,7 @@ public class CameraStart : MonoBehaviour
 {
     private GameManager gameManager;
     public void GoReady(){
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameManager.instance;
         gameManager.Ready();
     }
 }

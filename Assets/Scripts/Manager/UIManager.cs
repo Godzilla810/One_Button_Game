@@ -7,13 +7,19 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     public GameObject[] panels;
-    public TextMeshProUGUI[] records;
-    public Sprite[] sprites;
     public GameObject CG;
-
+    public Sprite[] sprites;
+    public TextMeshProUGUI[] records;
+    public GameObject inputField;
     public TextMeshProUGUI inputText;
 
+    public TextMeshProUGUI chargeUpCountText;
+    public TextMeshProUGUI flyCountText;
+    public TextMeshProUGUI flyDistanceText;
+    public TextMeshProUGUI endDistanceText;
+
     private GameManager gameManager;
+    private Axe axe;
     private RecordManager recordManager;
     // Start is called before the first frame update
     void Start()
@@ -25,25 +31,31 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        axe = Axe.instance;
         if (gameManager.isMenu){
             OpenPanel(0);
-            GetRecord();
+            GetRecords();
         }
         if (gameManager.isReady){
             OpenPanel(1);
         }
         else if (gameManager.isChargeUp){
             OpenPanel(2);
+            chargeUpCountText.text = gameManager.GetCount().ToString() + "Hit";
         }
         else if (gameManager.isFly){
             OpenPanel(3);
+            flyCountText.text = gameManager.GetCount().ToString() + "Hit";
+            flyDistanceText.text = axe.GetDistance().ToString("0.00");
+
         }
         if (gameManager.isEnd){
             OpenPanel(4);
+            endDistanceText.text = axe.finalDistance.ToString("0.00");
             GetCG();
         }
     }
-    void GetRecord(){
+    void GetRecords(){
         for (int i = 0;i < 10; i++){
             records[i].text = recordManager.PrintTextFile(i);
         }
@@ -69,6 +81,15 @@ public class UIManager : MonoBehaviour
         {
             CG.GetComponent<Image>().sprite = sprites[4];
         }
+    }
+    public void OK(){
+        string name = inputText.text;
+        if (name.Length == 1){
+            name = "none";
+        }
+        recordManager.CreateTextFile(name, gameManager.GetCount(), axe.finalDistance);
+        recordManager.SortFiles();
+        inputField.SetActive(false);
     }
     void OpenPanel(int panelIndex){
         for (int i = 0; i < panels.Length; i++){

@@ -1,1 +1,1 @@
-{"name":"Godzilla​","count":59,"distance":5332.94727}
+{"name":"lol​","count":39,"distance":2395.32}
