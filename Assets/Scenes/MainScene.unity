@@ -2346,7 +2346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603177663}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 130, y: 50, z: -30}
+  m_LocalPosition: {x: 130, y: 100, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2466,13 +2466,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28474dee8d642b488d04c175826ff82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CG: {fileID: 2033968542}
+  inputField: {fileID: 637798844}
+  inputText: {fileID: 562956495}
   panels:
   - {fileID: 1719351194}
   - {fileID: 1182795969}
   - {fileID: 242866584}
   - {fileID: 59124306}
   - {fileID: 1119511672}
-  CG: {fileID: 2033968542}
   sprites:
   - {fileID: 21300000, guid: 81c2c43696d908449a4d87a9e000b120, type: 3}
   - {fileID: 21300000, guid: 0494a4fb6dd2af74fa8f550250d8f50d, type: 3}
@@ -2490,8 +2492,6 @@ MonoBehaviour:
   - {fileID: 1911594321}
   - {fileID: 996390113}
   - {fileID: 583831893}
-  inputField: {fileID: 637798844}
-  inputText: {fileID: 562956495}
   chargeUpCountText: {fileID: 45828666}
   flyCountText: {fileID: 600300889}
   flyDistanceText: {fileID: 252063616}
@@ -7911,7 +7911,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8907514382083276728, guid: 277a72e373cf0de448429aa810056fbe, type: 3}
+  - {fileID: 2100000, guid: 490cd1c7d5373ae4a8de59457b166a14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Axe : MonoBehaviour
@@ -32,10 +30,17 @@ public class Axe : MonoBehaviour
     }
 
     public void ThrowWithForce(int count){
+        float forceMagnitude;
+        if (count > 100){
+            forceMagnitude = Mathf.Log(count) * 50;
+        }
+        else{
+            forceMagnitude = count;
+        }
         //拋物線
         Quaternion rotation = Quaternion.Euler(0f, 0f, throwAngle);
         Vector3 forceDirection = rotation * transform.right;
-        Vector3 force = forceDirection * count;
+        Vector3 force = forceDirection * forceMagnitude;
 
         RB.AddForce(force, ForceMode.Impulse);
     }

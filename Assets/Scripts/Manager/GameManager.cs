@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 //----------ReadME----------//
 // 確認目前狀態:
 // isReady
@@ -12,6 +12,7 @@ using UnityEngine.UI;
 //----------ReadME----------//
 public class GameManager : MonoBehaviour
 {
+    //實例化
     public static GameManager instance;
     void Awake() {
         if (instance != null){
@@ -19,12 +20,12 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
     }
-
+    //計算
     public GameObject banana;
     public int countdown = 5;
     public int count = 0;
     public TextMeshProUGUI countdownText;
-
+    //狀態
     public bool isMenu = true;
     public bool isReady = false;
     public bool isChargeUp = false;
@@ -39,6 +40,13 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
+        if (Input.GetKeyDown("escape")){
+        #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                    Application.Quit();
+        #endif
+        }
         if (Input.GetKeyDown("space") && isChargeUp){
             count++;
         }
@@ -83,6 +91,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         banana.SetActive(true);
     }
+
     IEnumerator Countdown()
     {
         count = 0;

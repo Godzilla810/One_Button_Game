@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Trigger for animation
 public class GoNext : MonoBehaviour
 {
     private GameManager gameManager;
